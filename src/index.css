@@ -11,3 +11,93 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-size: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-size: 3vh;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 80vw;
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-buttons button {
+  width: 12vw;
+  cursor: pointer;
+}
+
+.sign-buttons button:active {
+  width: 12.2vw;
+}
+
+.sign-buttons button:first-of-type {
+  border: 1px solid black;
+  border-radius: 5px 0 0 0;
+}
+
+.sign-buttons button:last-of-type {
+  border: 1px solid black;
+  border-radius: 0 5px 0 0;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24vw;
+  margin-bottom: 5vh;
+}
+
+.user-form input {
+  height: 8vh;
+  padding-left: 5%;
+}
+
+.user-form button {
+  height: 8vh;
+}
+
+.account {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 0.5vh solid black;
+  border-radius: 1vh;
+  width: 25vw;
+  height: 10vh;
+}
+
+.account div:first-of-type {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  width: 4vw;
+  text-align: center;
+}
+
+.account div:last-of-type {
+  padding-left: 1vw;
+}
+
+.account button {
+  cursor: pointer;
+  height: 100%;
+  width: 20%;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  margin-left: auto;
+}
