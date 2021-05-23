@@ -39,11 +39,11 @@ body {
   width: 12vw;
   cursor: pointer;
 }
-
-.sign-buttons button:active {
-  width: 12.2vw;
+/*
+.active-botton {
+  background-color: lightslategrey;
 }
-
+*/
 .sign-buttons button:first-of-type {
   border: 1px solid black;
   border-radius: 5px 0 0 0;

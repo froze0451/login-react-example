@@ -4,10 +4,12 @@ import React, { useEffect, useState } from 'react'
 function App() {
   const [data, changeData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
+  const [signMode, setMode] = useState('registration')
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
   const url = 'http://localhost:3001/users'
 
+  const style = { backgroundColor: "lightslategrey", border: '0.2vw solid DarkGray', cursor: 'inherit' }
   // useEffect(() => {
   //   async function fetchData() {
   //     setIsLoading(true);
@@ -70,7 +72,7 @@ function App() {
       body: JSON.stringify(user)
     })
 
-    /* now get fetch and update state, rerender component. change syntax!*/
+    /* now get fetch and update state, rerender component. add async/await syntax!*/
     await fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -84,6 +86,7 @@ function App() {
     setSurname('')
   }
 
+
   async function deleteUser(id) {
     await fetch(`http://localhost:3001/users/${id}`, {
       method: 'DELETE'
@@ -91,6 +94,18 @@ function App() {
     changeData(data.filter(c => c.id !== id))
   }
 
+  function changeMode(e) {
+    if (!e.target.classList.contains('active-button')) {
+      if (signMode === 'autorization') {
+        setMode('registration')
+      } else {
+        setMode('autorization')
+      }
+      // e.target.previousElementSubling.classList.toggle('active-button')
+      e.target.classList.toggle('active-button')
+      console.log(e.target.nextElementSubling)
+    }
+  }
 
 
   // const createUser = () => {
@@ -106,30 +121,31 @@ function App() {
 
       <div className="user-form">
         <div className="sign-buttons">
-          <button>Registration</button>
-          <button>Autorization</button>
+          <button style={signMode === 'autorization' ? style : { backgroundColor: "#efefef" }} onClick={(e) => changeMode(e)}>Registration</button>
+          <button /*className="active-button"*/ style={signMode === 'registration' ? style : { backgroundColor: "#efefef" }} onClick={(e) => changeMode(e)}>Autorization</button>
         </div>
         <input id="name" value={name} placeholder="Name" onChange={(e) => setName(e.target.value)}></input>
         <input id="surname" value={surname} placeholder="Surname" onChange={(e) => setSurname(e.target.value)}></input>
         <button onClick={(e) => name.replace(/\s/g, '') !== '' & surname.replace(/\s/g, '') !== '' ? addUser(e) : alert('Чтобы создать пользователя введите имя и фамилию')} /*onClick={createUser}*/>Принять</button>
       </div>
 
-      { isLoading
-        ? (<div>Loading...</div>)
-        : (data.length === 0
-          ? <p>Пока нет ни одного контакта</p>
-          : (<ul>
-            {data.map((item) => (
-              <li className="account" key={item.id}>
-                <div>{data.indexOf(item) + 1}</div>
-                <div>
-                  <div>{item.name}</div>
-                  <div>{item.surname}</div>
-                </div>
-                <button onClick={() => deleteUser(item.id)}>X</button>
-              </li>
-            ))}
-          </ul>))
+      {
+        isLoading
+          ? (<div>Loading...</div>)
+          : (data.length === 0
+            ? <p>Пока нет ни одного контакта</p>
+            : (<ul>
+              {data.map((item) => (
+                <li className="account" key={item.id}>
+                  <div>{data.indexOf(item) + 1}</div>
+                  <div>
+                    <div>{item.name}</div>
+                    <div>{item.surname}</div>
+                  </div>
+                  <button onClick={() => deleteUser(item.id)}>X</button>
+                </li>
+              ))}
+            </ul>))
       }
 
     </div >
