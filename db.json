@@ -3,22 +3,49 @@
     {
       "id": 1,
       "name": "Мистер",
-      "surname": "Пушистер"
+      "surname": "Пушистер",
+      "contacts": [
+        {
+          "name": "Малышка",
+          "surname": "Бони"
+        },
+        {
+          "name": "Леди",
+          "surname": "Димитреска"
+        },
+        {
+          "name": "Джой",
+          "surname": "Бой"
+        },
+        {
+          "name": "Биг",
+          "surname": "Мамму"
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Леди",
-      "surname": "Бьянка"
+      "surname": "Бьянка",
+      "contacts": [
+        {
+          "id": 3,
+          "name": "asdasd",
+          "surname": "asdasd"
+        }
+      ]
     },
     {
       "id": 3,
       "name": "Вкусный",
-      "surname": "Пончик"
+      "surname": "Пончик",
+      "contacts": []
     },
     {
       "id": 4,
       "name": "Ромовая",
-      "surname": "Баба"
+      "surname": "Баба",
+      "contacts": []
     }
   ]
 }

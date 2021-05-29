@@ -15,7 +15,6 @@ code {
 * {
   margin: 0;
   padding: 0;
-
   font-size: inherit;
 }
 
@@ -23,7 +22,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: inherit;
-  font-size: 3vh;
+  font-size: 1.5vw;
   box-sizing: border-box;
 }
 
@@ -35,25 +34,11 @@ body {
   align-items: center;
 }
 
-.sign-buttons button {
-  width: 12vw;
+button {
   cursor: pointer;
 }
-/*
-.active-botton {
-  background-color: lightslategrey;
-}
-*/
-.sign-buttons button:first-of-type {
-  border: 1px solid black;
-  border-radius: 5px 0 0 0;
-}
 
-.sign-buttons button:last-of-type {
-  border: 1px solid black;
-  border-radius: 0 5px 0 0;
-}
-
+/*login*/
 .user-form {
   display: flex;
   flex-direction: column;
@@ -62,20 +47,42 @@ body {
   margin-bottom: 5vh;
 }
 
+.sign-buttons button {
+  width: 50%;
+  cursor: pointer;
+}
+
+.sign-buttons button:first-of-type {
+  border-radius: 2vh 0 0 0;
+}
+
+.sign-buttons button:last-of-type {
+  border-radius: 0 2vh 0 0;
+}
+
 .user-form input {
   height: 8vh;
   padding-left: 5%;
 }
 
-.user-form button {
+.user-form button,
+.user-form .submit {
   height: 8vh;
+  border: 0.1vh solid #858585;
+}
+
+.user-form .submit {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .account {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 0.5vh solid black;
+  border: 0.4vh solid #858585;
   border-radius: 1vh;
   width: 25vw;
   height: 10vh;
@@ -98,6 +105,77 @@ body {
   width: 20%;
   background-color: red;
   border: none;
-  border-radius: 5px;
+  border-radius: 2vh;
   margin-left: auto;
+}
+
+/*profile*/
+.profile {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.profile header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile header > button {
+  border: none;
+  background-color: transparent;
+  color: red;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.profile-name {
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  color: grey;
+}
+
+.profile h2 {
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.4vh solid #858585;
+  border-radius: 1vh;
+  width: 25vw;
+  height: 8vh;
+  margin-bottom: 1vh;
+}
+
+.contact p:first-of-type {
+  padding-left: 5%;
+}
+
+.contact input {
+  padding-top: 1vh;
+  border: none;
+  text-align: center;
+  width: 67%;
+}
+
+.contact p:last-of-type {
+  padding-right: 5%;
+  color: grey;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.contact button {
+  height: 6vh;
+  width: 6vh;
+  background-color: red;
+  border: none;
+  border-radius: 1vh;
+  cursor: pointer;
 }
