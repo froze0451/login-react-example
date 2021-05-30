@@ -6,20 +6,29 @@
       "surname": "Пушистер",
       "contacts": [
         {
-          "name": "Малышка",
-          "surname": "Бони"
-        },
-        {
+          "id": 3,
           "name": "Леди",
-          "surname": "Димитреска"
+          "surname": "Димитреску"
         },
         {
-          "name": "Джой",
-          "surname": "Бой"
+          "id": 4,
+          "name": "Мастер",
+          "surname": "Фломастер"
         },
         {
-          "name": "Биг",
-          "surname": "Мамму"
+          "id": 7,
+          "name": "Крутой",
+          "surname": "Уокер"
+        },
+        {
+          "id": 5,
+          "name": "Король",
+          "surname": "Артур"
+        },
+        {
+          "id": 6,
+          "name": "Николас",
+          "surname": "Фламель"
         }
       ]
     },
@@ -29,9 +38,9 @@
       "surname": "Бьянка",
       "contacts": [
         {
-          "id": 3,
-          "name": "asdasd",
-          "surname": "asdasd"
+          "id": 1,
+          "name": "Одноглазый",
+          "surname": "Джо"
         }
       ]
     },
@@ -39,12 +48,6 @@
       "id": 3,
       "name": "Вкусный",
       "surname": "Пончик",
-      "contacts": []
-    },
-    {
-      "id": 4,
-      "name": "Ромовая",
-      "surname": "Баба",
       "contacts": []
     }
   ]

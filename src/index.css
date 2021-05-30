@@ -144,12 +144,11 @@ button {
 .contact {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   border: 0.4vh solid #858585;
   border-radius: 1vh;
   width: 25vw;
-  height: 8vh;
   margin-bottom: 1vh;
 }
 
@@ -157,25 +156,29 @@ button {
   padding-left: 5%;
 }
 
+.contact div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
 .contact input {
-  padding-top: 1vh;
   border: none;
-  text-align: center;
-  width: 67%;
+  width: 100%;
 }
 
 .contact p:last-of-type {
-  padding-right: 5%;
   color: grey;
   font-style: italic;
   cursor: pointer;
 }
 
 .contact button {
-  height: 6vh;
-  width: 6vh;
   background-color: red;
   border: none;
-  border-radius: 1vh;
+  border-radius: 0.5em;
   cursor: pointer;
+  height: 2em;
+  width: 10%;
 }
