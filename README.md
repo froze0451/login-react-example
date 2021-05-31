@@ -1,6 +1,6 @@
 ### This is Login/Contacts list two-page React app with server.
 
-Json server is used for fetching data.
+Json server is used for fetching and saving data.
 https://github.com/typicode/json-server
 
 First clone the repository and install json-server globally: 
