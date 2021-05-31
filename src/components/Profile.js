@@ -205,7 +205,7 @@ function Profile() {
         <button onClick={addContact}>Add contact</button>
       </div>
 
-      <h2>Contact list</h2>
+      <h2>Contacts list</h2>
       <ul>
         {contactsFilter !== '' ? (testFilter) :
           (contacts.length === 0 ? <p>Contact list is empty.</p> :

@@ -169,10 +169,6 @@ button {
   outline: none;
 }
 
-/* .contact input::placeholder {
-  color: black;
-} */
-
 .contact p:last-of-type {
   color: grey;
   font-style: italic;
