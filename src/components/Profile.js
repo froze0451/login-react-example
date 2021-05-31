@@ -9,6 +9,7 @@ function Profile() {
   const [contactSurname, setContactSurname] = useState('')
   const [contactsFilter, setContactsFilter] = useState('')
   const [testFilter, setTestFilter] = useState('')
+  const [testEdit, setTestEdit] = useState({})
 
   const id = localStorage.getItem('userDataId')
   const url = 'http://localhost:3001/users'
@@ -110,23 +111,10 @@ function Profile() {
   async function filterContacts(e) {
     await setContactsFilter(e.target.value)
 
-
     let re = new RegExp('^' + e.target.value, 'i')
-
-
     let filteredContacts = contacts.filter(c => { return c.name.match(re) || c.surname.match(re) || (c.name + " " + c.surname).match(re) })
+
     console.log(filteredContacts)
-    // return (filteredContacts.map((item, index) => (
-    //   <li className='contact' key={index}>
-    //     <p>{index + 1}</p>
-    //     <div>
-    //       <input readOnly value={item.name} />
-    //       <input readOnly value={item.surname} />
-    //     </div>
-    //     <p>edit</p>
-    //     <button onClick={() => deleteContact(item.name, item.surname)}>X</button>
-    //   </li>
-    // )))
 
     setTestFilter(filteredContacts.length > 0 ? (filteredContacts.map((item, index) => (
       <li className='contact' key={index}>
@@ -138,8 +126,69 @@ function Profile() {
         <p>edit</p>
         <button onClick={() => deleteContact(item.name, item.surname)}>X</button>
       </li>
-    ))) : (<p>Нет совпадений</p>))
+    ))) : (<p>No matches</p>))
+  }
 
+  /* */
+  function engageEdit(name, surname, index) {
+    setTestEdit({
+      name: name,
+      surname: surname,
+      index: index
+    })
+  }
+
+  function editContactName(e) {
+    setTestEdit(prevState => ({
+      ...prevState,
+      name: e.target.value
+    }))
+    console.log(testEdit)
+  }
+
+  function editContactSurname(e) {
+    setTestEdit(prevState => ({
+      ...prevState,
+      surname: e.target.value
+    }))
+    console.log(testEdit)
+  }
+
+  async function saveEdit() {
+    let someData
+
+    await fetch(`${url}/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        someData = data
+      })
+
+    let editedContact = {
+      id: someData.contacts[testEdit.index].id,
+      name: testEdit.name,
+      surname: testEdit.surname
+    }
+
+    someData.contacts[testEdit.index] = editedContact
+
+    await fetch(`${url}/${id}`, {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(someData)
+    })
+
+    await fetch(`${url}/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setContacts(data.contacts)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+    setTestEdit({})
   }
 
   return (
@@ -159,17 +208,18 @@ function Profile() {
       <h2>Contact list</h2>
       <ul>
         {contactsFilter !== '' ? (testFilter) :
-          (contacts.map((item, index) => (
-            <li className='contact' key={index}>
-              <p>{index + 1}</p>
-              <div>
-                <input readOnly value={item.name} />
-                <input readOnly value={item.surname} />
-              </div>
-              <p>edit</p>
-              <button onClick={() => deleteContact(item.name, item.surname)}>X</button>
-            </li>
-          )))}
+          (contacts.length === 0 ? <p>Contact list is empty.</p> :
+            (contacts.map((item, index) => (
+              <li className='contact' key={index}>
+                <p>{index + 1}</p>
+                <div>
+                  <input readOnly={testEdit.index === index ? false : true} value={testEdit.index === index ? testEdit.name : item.name} style={testEdit.index === index ? { border: '1px solid black' } : { border: 'none' }} onChange={(e) => editContactName(e)} />
+                  <input readOnly={testEdit.index === index ? false : true} value={testEdit.index === index ? testEdit.surname : item.surname} style={testEdit.index === index ? { border: '1px solid black' } : { border: 'none' }} onChange={(e) => editContactSurname(e)} />
+                </div>
+                <p onClick={testEdit.index !== index ? (() => engageEdit(item.name, item.surname, index)) : (() => saveEdit())}>{testEdit.index === index ? 'save' : 'edit'}</p>
+                <button onClick={() => deleteContact(item.name, item.surname)}>X</button>
+              </li>
+            ))))}
       </ul>
     </div>
   )

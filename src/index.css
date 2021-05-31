@@ -164,9 +164,14 @@ button {
 }
 
 .contact input {
-  border: none;
   width: 100%;
+  border: none;
+  outline: none;
 }
+
+/* .contact input::placeholder {
+  color: black;
+} */
 
 .contact p:last-of-type {
   color: grey;
