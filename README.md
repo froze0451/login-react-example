@@ -1,4 +1,4 @@
-### This is Login/Contacts list two-screans React spa with server.
+### This is Login/Contacts list two-screens React spa with server.
 
 Json server is used for fetching and saving data.
 https://github.com/typicode/json-server
